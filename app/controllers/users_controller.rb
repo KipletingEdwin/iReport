@@ -1,54 +1,19 @@
 class UsersController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    #before_action :authorize, except: :create
-    before_action :find_user, except: [:create, :index]
-
-    skip_before_action :authorized, only: [:create], :raise => false
-
-
-  # GET /users
-  def index
-    @users = User.all 
-    render json: @users, status: :ok
+  skip_before_action :authorized, only: [:create]
+  def profile
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
   end
-
-  def show
-    render json: @user, status: :ok
-  end
-
   def create
-    @user = User.create!(user_params)
-    token = encode_token({user_id: @user.id})
-    render json: {user: @user, token: token}, status: :created
+    @user = User.create(user_params)
+    if @user.valid?
+      @token = encode_token({user_id: @user.id})
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    else
+      render json: { error: 'failed to create user' }, status: :unprocessable_entity
+    end
   end
-
-
-  def update
-    @user.update!(user_params)
-     render json: @user, status: :accepted
-  end
-
-  def destroy
-    @user.destroy
-    head :no_content
-  end
-
-
   private
-
-  def find_user
-    @user = User.find(params[:id])
-  end
-
   def user_params
-    params.permit(
-     :name, :username,  :email, :password, :password_confirmation
-    )
+    params.require(:users).permit(:name, :username, :email, :password, :password_confirmation)
   end
-
-  def render_not_found_response
-        render json: { error: "User not found" }, status: :not_found
-  end
-  
-
 end

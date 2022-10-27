@@ -14,7 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_065344) do
   create_table "admins", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.integer "incident_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -26,6 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_065344) do
     t.string "location"
     t.string "date"
     t.string "image_url"
+    t.integer "user_id", null: false
+    t.integer "admin_id", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
