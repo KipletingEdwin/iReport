@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
   end
 
+  def index
+    user = User.all
+    render json: user, status: :ok
+  end
+
 
   def create
     @user = User.create(user_params)
