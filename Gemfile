@@ -19,10 +19,6 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers'
-
-gem "jwt", "~> 2.5"
-
-gem "pg", "~> 1.1"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
@@ -39,3 +35,11 @@ group :development do
   # gem "spring"
 end
 
+group :production do
+  gem 'pg', '~> 1.4', '>= 1.4.3'
+  gem 'sinatra-contrib', '~> 2.2', '>= 2.2.2',require: false
+  end
+
+
+
+gem "jwt", "~> 2.5"
