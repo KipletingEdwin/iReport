@@ -4,6 +4,10 @@ Admin.create(username: "jackson", password_digest: "roses@red")
 Admin.create(username: "john", password_digest: "roses")
 
 
+User.create( name: 'Silvia Mutete', username: 'SilviaMutete', email: 'silviamutete@gmail.com',password_digest: 'silviamutete')
+User.create( name: 'Monicah Ndunge', username: 'MonicahNdunge', email: 'monicahndunge@gmail.com',password_digest: 'monicahndunge')
+
+
 Incident.create(
     incident_type: 'redflag',
     title: 'Bad roads',
@@ -51,8 +55,7 @@ Incident.create(
 )
 
 
-User.create( name: 'Silvia Mutete', username: 'SilviaMutete', email: 'silviamutete@gmail.com',password_digest: 'silviamutete')
-User.create( name: 'Monicah Ndunge', username: 'MonicahNdunge', email: 'monicahndunge@gmail.com',password_digest: 'monicahndunge')
+
 
 
 
