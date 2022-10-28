@@ -1,8 +1,14 @@
 class AdminsController < ApplicationController
+  
   skip_before_action :authorized
     def index
         admins = Admin.all
         render json: admins, status: :ok
+    end
+
+
+    def profile
+      render json: { admin: AdminSerializer.new(current_user) }, status: :accepted
     end
     # def create
     #     @admin = Admin.new(admin_params)
