@@ -10,17 +10,7 @@ class AdminsController < ApplicationController
     def profile
       render json: { admin: AdminSerializer.new(current_user) }, status: :accepted
     end
-    # def create
-    #     @admin = Admin.new(admin_params)
-    
-    #     respond_to do |format|
-    #       if @admin.save
-    #         format.json { render :show, status: :created }
-    #       else
-    #         format.json { render json: @admin.errors, status: :unprocessable_entity }
-    #       end
-    #     end
-    #   end
+   
 
     # def create
     #   @admin = Admin.create(admin_params)
