@@ -7,3 +7,5 @@ Rails.application.routes.draw do
   get '/profile', to: 'user#profile'
 
   post '/signin', to: 'admins#create' 
+
+end
