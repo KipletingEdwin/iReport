@@ -22,13 +22,25 @@ class AdminsController < ApplicationController
     #     end
     #   end
 
+    # def create
+    #   @admin = Admin.create(admin_params)
+    #   if @admin.valid?
+    #     @token = encode_token({admin_id: @admin.id})
+    #     render json: { admin: AdminSerializer.new(@admin), jwt: @token }, status: :created
+    #   else
+    #     render json: { error: 'failed to create admin' }, status: :unprocessable_entity
+    #   end
+    # end
+
     def create
-      @admin = Admin.create(admin_params)
-      if @admin.valid?
-        @token = encode_token({admin_id: @admin.id})
-        render json: { admin: AdminSerializer.new(@admin), jwt: @token }, status: :created
+      @admin = Admin.find_by(username: admin_params[:username])
+      #User#authenticate comes from BCrypt
+      if @admin && @admin.authenticate(admin_params[:password])
+        # encode token comes from ApplicationController
+        token = encode_token({ user_id: @admin.id })
+        render json: { user: AdminSerializer.new(@admin), jwt: token }, status: :accepted
       else
-        render json: { error: 'failed to create admin' }, status: :unprocessable_entity
+        render json: { message: 'Invalid username or password' }, status: :unauthorized
       end
     end
 
