@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#create' 
   get '/profile', to: 'user#profile'
 
-  post '/signin', to: 'admins#create' 
+  post '/signin', to: 'authadmins#create' 
 
 end
