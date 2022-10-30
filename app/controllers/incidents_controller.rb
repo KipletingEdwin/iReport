@@ -38,7 +38,7 @@ class IncidentsController < ApplicationController
     end
 
     def incident_params
-        params.permit(:incident_type, :title, :description, :location, :date , :image_url, :status)
+        params.permit(:incident_type, :title, :description, :location, :date , :image_url, :status, :user_id)
     end
 
     # def render_not_found_response

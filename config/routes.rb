@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :admins, only:[:create, :index]
-  resources :incidents, only: [:index, :create, :show, :update, :delete]
+  resources :incidents
   resources :users, only: [ :create, :index]
 
   post '/login', to: 'auth#create' 
   get '/profile', to: 'user#profile'
 
-  post '/signin', to: 'authadmins#create' 
+  post '/' => 'incidents#create'
+
+  
 
 end

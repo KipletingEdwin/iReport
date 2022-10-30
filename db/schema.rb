@@ -11,13 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_10_28_112828) do
-  create_table "admins", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "incidents", force: :cascade do |t|
     t.string "incident_type"
     t.string "title"
@@ -26,7 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_112828) do
     t.string "date"
     t.string "image_url"
     t.integer "user_id", null: false
-    t.integer "admin_id", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_112828) do
     t.string "name"
     t.string "username"
     t.string "email"
+    t.boolean "isAdmin"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

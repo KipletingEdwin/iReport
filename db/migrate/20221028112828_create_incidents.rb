@@ -8,7 +8,6 @@ class CreateIncidents < ActiveRecord::Migration[7.0]
       t.string :date
       t.string :image_url
       t.integer :user_id,  null: false, foreign_key: true
-      t.integer :admin_id,  null: false, foreign_key: true
       t.string :status
 
       t.timestamps
