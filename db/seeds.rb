@@ -1,8 +1,8 @@
 puts "Seeding..."
 
 
-User.create( name: 'Silvia Mutete', username: 'SilviaMutete', email: 'silviamutete@gmail.com', isAdmin:'false', password_digest: 'silviamutete')
-User.create( name: 'Monicah Ndunge', username: 'MonicahNdunge', email: 'monicahndunge@gmail.com', isAdmin:'true', password_digest: 'monicahndunge')
+User.create( name: 'James', username: 'James', email: 'James@gmail.com', user_type:0, password_digest: '$2a$12$jzbXTnsbPR3SKtsApCfWuOFU8Lcw/n3NQblGEjCoL7o77C6adWP8m')
+User.create( name: 'Peter', username: 'Peter', email: 'Peter@gmail.com', user_type:1, password_digest: '$2a$12$PEhemvvGGK7Tv1XGt25uj.bbqMlXyZJ7DVRs7rkKm2606z9VR2JC6')
 
 
 Incident.create(
